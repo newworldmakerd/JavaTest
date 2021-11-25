@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册界面</title>
+    <script type="text/javascript" src="lyh.js"></script>
+    <script type="text/javascript">
+        function check(frm) {
+            var ts = document.getElementById("ts");
+            var uid = frm.uid.value;
+            var place = frm.uplace.value;
+            if (validId(uid)) {
+
+                if (isPwd(frm.upwd.value)) {
+                    ts.innerHTML="密码符合要求"
+                    if (isChinese(frm.uplace.value)) {
+                        ts.innerHTML="注册成功";
+                        return true;
+                    } else {
+                        ts.innerHTML="户籍不是中文"
+                        return false;
+                    }
+                } else {
+                    ts.innerHTML="请输入8-16位数字字母密码";
+                    return false;
+                }
+
+            } else {
+                ts.innerHTML="用户名不符合要求，请输入1000到9999的用户id";
+                return false;
+            }
+
+            return true;
+        }
+
+        function abc() {
+            return confirm("要删除嘛");
+        }
+    </script>
+</head>
+<body>
+<a href="javascript:alert('用某种后端语言实现功能...')">test2</a>
+<form action="javascript:alert('用某种后端语言实现功能...')" onsubmit="return check(this)">
+
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" id="uid" name="uid"></td>
+        </tr>
+        <tr>
+            <td>用户密码</td>
+            <td><input type="password" id="upwd" name="upwd"></td>
+        </tr>
+        <tr>
+            <td>用户邮箱</td>
+            <td><input type="email" id="uemail" name="uemail"></td>
+        </tr>
+        <tr>
+            <td>用户籍贯</td>
+            <td><input type="text" id="uplace" name="uplace"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="注册"></td>
+            <td></td>
+            <td><input type="reset" value="重置"></td>
+        </tr>
+    </table>
+    <lyh id="ts" style="color:#ff0000;font-size:12px">lyhlyh</lyh>
+</form>
+</body>
+</html>
